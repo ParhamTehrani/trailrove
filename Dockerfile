@@ -1,7 +1,7 @@
-# Dockerfile
+# Use PHP 8 FPM as the base image
 FROM php:8-fpm
 
-# Install dependencies for the PHP extension installer
+# Install system dependencies
 RUN apt-get update && apt-get install -y \
     libpng-dev \
     libonig-dev \
@@ -11,20 +11,18 @@ RUN apt-get update && apt-get install -y \
     git \
     curl
 
-# Install extensions
+# Install PHP extensions
 RUN docker-php-ext-install pdo_mysql mbstring exif pcntl bcmath gd
 
 # Get latest Composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
+# Set working directory
+WORKDIR /var/www
 
-# Add user for laravel application
+# Add a user for the Laravel application
 RUN groupadd -g 1000 www
 RUN useradd -u 1000 -ms /bin/bash -g www www
-
-# Copy existing application directory contents with correct ownership
-COPY --chown=www:www . /var/www/html
-
 
 # Change current user to www
 USER www
