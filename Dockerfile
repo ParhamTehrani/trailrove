@@ -27,6 +27,9 @@ RUN useradd -u 1000 -ms /bin/bash -g www www
 # Change current user to www
 USER www
 
+COPY --chown=www:www . /var/www/html
+
+
 # Expose port 9000 and start php-fpm server
 EXPOSE 9000
 CMD ["php-fpm"]
