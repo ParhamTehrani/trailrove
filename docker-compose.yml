@@ -12,7 +12,7 @@ services:
     volumes:
       - ./src:/var/www/html
       - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
-      - ./nginx/redirect.conf:/etc/nginx/conf.d/redirect.conf
+#      - ./nginx/redirect.conf:/etc/nginx/conf.d/redirect.conf
       - /etc/letsencrypt/live/trailrove.com/fullchain.pem:/etc/ssl/certs/trailrove.com.crt
       - /etc/letsencrypt/live/trailrove.com/privkey.pem:/etc/ssl/private/trailrove.com.key
     depends_on:
