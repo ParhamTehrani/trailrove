@@ -8,8 +8,8 @@ services:
     ports:
       - "80:80"
       - "443:443"  # Add HTTPS port
-      - /path/to/letsencrypt/live/trailrove.com/fullchain.pem:/etc/ssl/certs/trailrove.com.crt
-      - /path/to/letsencrypt/live/trailrove.com/privkey.pem:/etc/ssl/private/trailrove.com.key
+      - /etc/letsencrypt/live/trailrove.com/fullchain.pem:/etc/ssl/certs/trailrove.com.crt
+      - /etc/letsencrypt/live/trailrove.com/privkey.pem:/etc/ssl/private/trailrove.com.key
 
     volumes:
       - ./src:/var/www/html
