@@ -18,7 +18,7 @@ class IndexController extends Controller
 {
     public function home()
     {
-        dd('aaa');
+
         $sliders = (new SliderRepository(new Slider()))->getActive();
         $recentNews = (new NewsRepository(new News()))->getLatestPublish(7);
         $categories = (new CategoryRepository(new Category()))->getParentCategories();
